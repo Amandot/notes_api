@@ -1,9 +1,3 @@
-That’s a great idea. Adding visual proof of your API working (like Postman screenshots) makes a README look much more professional and "battle-tested."
-
-I have updated the layout to include dedicated sections for the **POST** and **PUT** success responses. You can just replace the placeholder text with your actual image paths or URLs.
-
----
-
 # Notes Management API 📝
 
 A minimal, intelligent REST API built with **Node.js** and **Express**. This project goes beyond basic CRUD by implementing validation, rate limiting, and smart search logic.
@@ -33,14 +27,14 @@ A minimal, intelligent REST API built with **Node.js** and **Express**. This pro
 ### 1. Create a Note (`POST /notes`)
 
 **Description:** Validates input and creates a unique note.
-![Success Post](./images/post.png)
-> *Example success response: `201 Created*`
+![POST /notes successt](./images/post.png)
+> *Example success response: `201 Created`
 
 ### 2. Update a Note (`PUT /notes/:id`)
 
 **Description:** Performs partial updates. If the new data is identical to the old data, it notifies the user without changing the timestamp.
-![Success Post](./images/put.png)
-> *Example success response: `200 OK - Note updated successfully*`
+![PUT /notes no change](./images/put.png)
+> *Example success response: `200 OK - No changes detected*`
 
 
 | Method | Endpoint | Description |
@@ -70,4 +64,4 @@ node index.js
 ```
 
 
-*Server running at: `http://localhost:3000*`
+*Server running at: `http://localhost:3000`*
