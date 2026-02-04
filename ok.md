@@ -33,13 +33,13 @@ A minimal, intelligent REST API built with **Node.js** and **Express**. This pro
 ### 1. Create a Note (`POST /notes`)
 
 **Description:** Validates input and creates a unique note.
-![Success Post](notes-api/post.png)
+![Success Post](./images/post.png)
 > *Example success response: `201 Created*`
 
 ### 2. Update a Note (`PUT /notes/:id`)
 
 **Description:** Performs partial updates. If the new data is identical to the old data, it notifies the user without changing the timestamp.
-![Success Post](notes-api/put.png)
+![Success Post](./images/put.png)
 > *Example success response: `200 OK - Note updated successfully*`
 
 
