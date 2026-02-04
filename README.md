@@ -1,62 +1,67 @@
-# Notes Management API
+# Notes Management API 📝
 
-A minimal REST API built with Node.js and Express for managing notes with basic intelligence beyond CRUD.
-
----
-
-## Features (As per Assignment)
-
-- Create notes with validation  
-  - `title` and `content` are required  
-  - Extra spaces are trimmed  
-  - Empty strings are rejected  
-- Rate limiting  
-  - Maximum **5 note creations per minute**
-- Get all notes  
-  - Returns list of notes  
-  - Sorted by most recently updated
-- Update notes  
-  - Partial updates allowed  
-  - Returns a meaningful message if no changes are made  
-  - Updates `updated_at` only when data changes
-- Search notes  
-  - Searches in both title and content  
-  - Case-insensitive  
-  - Ignores extra spaces  
-  - Partial matching supported (e.g. `meet` → `meeting`)  
-  - Returns error if query is empty
+A minimal, intelligent REST API built with **Node.js** and **Express**. This project goes beyond basic CRUD by implementing validation, rate limiting, and smart search logic.
 
 ---
 
-## Tech Stack
+## 🚀 Features
 
-- Node.js
-- Express.js
-- express-rate-limit
-- uuid
+* **Smart Creation:** Validates `title` and `content`. Rejects empty strings and trims extra whitespace.
+* **Rate Limiting:** Security-first approach limiting users to **5 note creations per minute**.
+* **Advanced Search:** Case-insensitive partial matching across both titles and content.
+* **Optimized Updates:** `updated_at` only refreshes if the data actually changes.
+* **Sorting:** Automatically returns notes sorted by the most recently updated.
 
 ---
 
-## Setup & Run
+## 🛠 Tech Stack
 
+* **Runtime:** Node.js
+* **Framework:** Express.js
+* **Utilities:** `uuid`, `express-rate-limit`
+
+---
+
+## 📑 API Endpoints & Usage
+
+### 1. Create a Note (`POST /notes`)
+
+**Description:** Validates input and creates a unique note.
+![POST /notes successt](./images/post.png)
+> *Example success response: `201 Created`
+
+### 2. Update a Note (`PUT /notes/:id`)
+
+**Description:** Performs partial updates. If the new data is identical to the old data, it notifies the user without changing the timestamp.
+![PUT /notes no change](./images/put.png)
+> *Example success response: `200 OK - No changes detected*`
+
+
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| **POST** | `/notes` | Create a note (Rate limited) |
+| **GET** | `/notes` | Get all notes (Sorted) |
+| **PUT** | `/notes/:id` | Update existing note |
+| **GET** | `/notes/search` | Search by keyword |
+
+---
+
+## 💻 Setup & Installation
+
+1. **Clone and Install**
 ```bash
+git clone <your-repo-url>
+cd notes-management-api
 npm install
+
+```
+
+
+2. **Run the Server**
+```bash
 node index.js
 
-Server runs on:
+```
 
-http://localhost:3000
 
-API Endpoints
-
-POST /notes – Create note
-
-GET /notes – Get all notes
-
-PUT /notes/:id – Update note
-
-GET /notes/search?q=keyword – Search notes
-
-Testing
-
-All endpoints were tested using Postman, including validation, search, update, and rate limiting cases.
+*Server running at: `http://localhost:3000`*
