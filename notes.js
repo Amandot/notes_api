@@ -4,7 +4,7 @@ const { v4: uuid } = require("uuid");
 
 const router = express.Router();
 
-/* In-memory storage */
+
 let notes = [];
 
 /* Rate limiter: max 5 notes per minute */
@@ -14,10 +14,7 @@ const createLimiter = rateLimit({
   message: { error: "Too many notes created. Try again later." }
 });
 
-/* =========================
-   CREATE NOTE
-   POST /notes
-========================= */
+/*CREATE NOTE */
 router.post("/", createLimiter, (req, res) => {
   let { title, content } = req.body;
 
@@ -44,11 +41,7 @@ router.post("/", createLimiter, (req, res) => {
   res.status(201).json(note);
 });
 
-/* =========================
-   SEARCH NOTES
-   GET /notes/search?q=text
-   (must be ABOVE /:id)
-========================= */
+
 router.get("/search", (req, res) => {
   let q = req.query.q;
 
@@ -66,10 +59,7 @@ router.get("/search", (req, res) => {
   res.json(results);
 });
 
-/* =========================
-   GET ALL NOTES
-   GET /notes
-========================= */
+/*GET ALL NOTES*/
 router.get("/", (req, res) => {
   const sortedNotes = [...notes].sort(
     (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
@@ -77,10 +67,7 @@ router.get("/", (req, res) => {
   res.json(sortedNotes);
 });
 
-/* =========================
-   UPDATE NOTE
-   PUT /notes/:id
-========================= */
+
 router.put("/:id", (req, res) => {
   const note = notes.find(n => n.id === req.params.id);
 
@@ -114,5 +101,4 @@ router.put("/:id", (req, res) => {
   res.json(note);
 });
 
-/* Export router */
 module.exports = router;
