@@ -51,7 +51,7 @@ A minimal, intelligent REST API built with **Node.js** and **Express**. This pro
 1. **Clone and Install**
 ```bash
 git clone https://github.com/Amandot/notes_api.git
-cd notes-management-api
+cd notes_api
 npm install
 
 ```
